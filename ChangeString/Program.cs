@@ -6,12 +6,12 @@ namespace ChangeString
     {
         static void Main(string[] args)
         {
-
             string fraseFinal ="";
+
             Console.Write("String: ");
             string frase = Console.ReadLine();
 
-            Console.Write("\nCaráter: ");
+            Console.Write("Caráter: ");
             string caracter = Console.ReadLine();
 
             char c = char.Parse(caracter);
@@ -27,8 +27,7 @@ namespace ChangeString
                     fraseFinal += frase[i];
                 }
             }
-
-            Console.Write($"\nSerá impresso: {fraseFinal}");
+            Console.Write($"Será impresso: {fraseFinal}");
         }
     }
 }
