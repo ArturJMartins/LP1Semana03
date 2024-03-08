@@ -15,54 +15,68 @@ namespace HeroPerks
 
             Perks myPerks = 0;
             
-            for (int i = 0; i < args.Length; i++)
+            foreach (char perkLetra in args[0])
             {
-                if(args[i] == "w")
+                if(perkLetra == 'w')
                 {
                     countW++;
                 }
-                else if(args[i] == "s")
+                else if(perkLetra == 's')
                 {
                     countS++;
                 }
-                else if(args[i] == "a")
+                else if(perkLetra == 'a')
                 {
                     countA++;
                 }
-                else if(args[i] == "d")
+                else if(perkLetra == 'd')
                 {
                     countD++;
                 }
                 else
                 {
                     Console.WriteLine("Unknown perk!");
-                    break;
+                    return;
                 }
             }
 
             if(countW % 2 != 0)
             {
-                myPerks = Perks.WaterBreathing;
+                myPerks = Perks.WaterBreathing | myPerks;
             }
 
             if(countS % 2 != 0)
             {
-                myPerks = Perks.Stealth;
+                myPerks = Perks.Stealth | myPerks;
             }
 
             if(countA % 2 != 0)
             {
-                myPerks = Perks.AutoHeal;
+                myPerks = Perks.AutoHeal | myPerks;
             }
 
             if(countD % 2 != 0)
             {
-                myPerks = Perks.DoubleJump;
+                myPerks = Perks.DoubleJump | myPerks;
             }
 
             if(myPerks != 0)
             {
                 Console.WriteLine(myPerks);
+                if((myPerks & Perks.Stealth) == Perks.Stealth & 
+                (myPerks & Perks.DoubleJump) == Perks.DoubleJump )
+                {
+                    Console.WriteLine("Silent jumper!");
+                }
+                if((myPerks & Perks.AutoHeal) != Perks.AutoHeal)
+                {
+                    Console.WriteLine("Not gonna make it!");
+                }
+            }
+            if(myPerks == 0)
+            {
+                Console.WriteLine("No perks at all");
+                Console.WriteLine("Not gonna make it!");
             }
         }
     }
